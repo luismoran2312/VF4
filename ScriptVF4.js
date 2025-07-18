@@ -165,3 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+document.getElementById('menu-toggle').addEventListener('click', () => {
+  const nav = document.querySelector('.nav-buttons');
+  nav.classList.toggle('show');
+});
