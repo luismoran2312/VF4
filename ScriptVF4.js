@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function onScroll() {
     const scrollPos = window.scrollY || window.pageYOffset;
-    const offsetMargin = 110; // Ajusta si tu header tiene altura diferente
+    const offsetMargin = 110; // Ajusta según la altura de tu header
 
     let currentActive = null;
 
@@ -43,27 +43,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const floatingBtns = document.querySelectorAll('.floating-btn');
   const footer = document.querySelector('footer');
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        floatingBtns.forEach(btn => btn.style.transform = 'translateY(-100px)');
-      } else {
-        floatingBtns.forEach(btn => btn.style.transform = 'translateY(0)');
-      }
+  if (footer && floatingBtns.length > 0) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          floatingBtns.forEach(btn => btn.style.transform = 'translateY(-100px)');
+        } else {
+          floatingBtns.forEach(btn => btn.style.transform = 'translateY(0)');
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.1
     });
-  }, {
-    root: null,
-    threshold: 0.1
-  });
 
-  observer.observe(footer);
+    observer.observe(footer);
+  }
 
   // === MOSTRAR / OCULTAR FORMULARIO DE CONTACTO ===
   const btnCorreo = document.getElementById('btn-correo');
   const form = document.getElementById('formulario-contacto');
 
   if (btnCorreo && form) {
-    btnCorreo.addEventListener('click', function (e) {
+    btnCorreo.addEventListener('click', e => {
       e.preventDefault();
       form.classList.toggle('oculto');
 
@@ -82,45 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
       el.classList.add('hoy');
     }
   });
-});
 
-document.querySelectorAll('.btn-servicio').forEach(button => {
-  button.addEventListener('click', () => {
-    const targetId = button.getAttribute('data-target');
-    const targetSection = document.getElementById(targetId);
-    if (targetSection) {
-      targetSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
-
-document.querySelectorAll('.btn-servicio, .dropdown-content a').forEach(el => {
-  el.addEventListener('click', e => {
-    e.preventDefault();
-
-    const targetId = el.dataset.target || el.getAttribute('href').replace('#', '');
-    const target = document.getElementById(targetId);
-
-    if (!target) return;
-
-    // Oculta todas las secciones de detalle
-    document.querySelectorAll('.detalle-servicio').forEach(sec => {
-      sec.classList.add('oculto');
-    });
-
-    // Muestra la sección objetivo
-    target.classList.remove('oculto');
-
-    // Scroll suave a la sección
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const botonesServicio = document.querySelectorAll('[data-target]');
-  const secciones = document.querySelectorAll('.detalle-servicio');
+  // === BOTONES DE SERVICIO PARA MOSTRAR SECCIÓN Y SCROLL SUAVE ===
+  const botonesServicio = document.querySelectorAll('.btn-servicio, .dropdown-content a');
 
   function mostrarSeccion(id) {
+    const secciones = document.querySelectorAll('.detalle-servicio');
     secciones.forEach(sec => {
       if (sec.id === id) {
         sec.classList.remove('oculto');
@@ -129,44 +98,59 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Desplazarse a la sección visible (opcional)
     const destino = document.getElementById(id);
     if (destino) {
       destino.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
-  botonesServicio.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  botonesServicio.forEach(el => {
+    el.addEventListener('click', e => {
       e.preventDefault();
-      const id = btn.getAttribute('data-target');
-      if (id) {
-        mostrarSeccion(id);
-      }
+
+      const targetId = el.dataset.target || (el.getAttribute('href') ? el.getAttribute('href').replace('#', '') : null);
+      if (!targetId) return;
+
+      mostrarSeccion(targetId);
     });
   });
+
+  // === MENÚ HAMBURGUESA ===
+  const menuBtn = document.querySelector('.menu-hamburguesa, .menu-toggle');
+  const navMenu = document.querySelector('nav.nav-buttons, .menu-nav');
+
+  if (menuBtn && navMenu) {
+    menuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+      navMenu.classList.toggle('active');
+    });
+
+    // Cerrar menú al clicar un enlace (útil en móvil)
+    navMenu.querySelectorAll('a.btn-rounded, .menu-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('show', 'active');
+      });
+    });
+  }
 });
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
-  const menuBtn = document.querySelector('.menu-hamburguesa');
-  const navMenu = document.querySelector('nav.nav-buttons');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menuNav = document.querySelector('.menu-nav');
 
-  menuBtn.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
+  menuToggle.addEventListener('click', () => {
+    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    // Alternar visibilidad
+    menuNav.classList.toggle('visible');
+    // Alternar aria-expanded
+    menuToggle.setAttribute('aria-expanded', !isExpanded);
   });
 
-  // Opcional: cerrar menú al hacer clic en algún enlace (útil en móvil)
-  navMenu.querySelectorAll('a.btn-rounded').forEach(link => {
+  // Opcional: cerrar menú cuando se clickea un enlace del menú
+  menuNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      navMenu.classList.remove('show');
+      menuNav.classList.remove('visible');
+      menuToggle.setAttribute('aria-expanded', 'false');
     });
   });
-});
-
-document.getElementById('menu-toggle').addEventListener('click', () => {
-  const nav = document.querySelector('.nav-buttons');
-  nav.classList.toggle('show');
 });

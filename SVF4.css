@@ -361,6 +361,8 @@ footer {
 
 .footer-left {
   font-size: 0.9rem;
+  text-align: center;
+  flex: 1;
 }
 
 .footer-icons {
@@ -976,161 +978,162 @@ section#contacto .texto-seccion {
   font-size: 1.1rem;
 }
 
+/* MOVIL DE AQUI PARA ABAJO */
+/* ---------------------------
+   MEDIA QUERIES PARA MÓVILES
+------------------------------*/
 
+@media screen and (max-width: 768px) {
 
-
-
-
-
-
-@media (max-width: 768px) {
-  /* HEADER y NAV */
-  header {
-    padding: 0.5rem 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .logo {
-    text-align: center;
-    font-size: 1rem;
-    display: flex;
+  /* Ajuste de navegación */
+  .nav-buttons {
     flex-direction: column;
     align-items: center;
-  }
-
-  .logo img {
-    height: 50px;
-    margin-bottom: 0.5rem;
-  }
-
-  .menu-toggle {
-    display: block;
-    font-size: 1.5rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    margin-left: auto;
-    padding: 0.5rem;
-    color: var(--dark-purple);
-  }
-
-  .nav-buttons {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-top: 1px solid #ccc;
-    margin-top: 1rem;
-  }
-
-  .nav-buttons.show {
-    display: flex;
+    text-align: center;
+    gap: 10px;
   }
 
   .nav-buttons a {
-    padding: 0.75rem;
-    font-size: 1rem;
-    text-align: left;
+    width: 100%;
+    display: block;
   }
 
-  /* TEXTO GENERAL */
-  body, section, p, h1, h2, h3, h4, h5, h6 {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
-  /* TARJETAS */
-  .tarjetas-servicios {
+  /* Inicio contenido */
+  .inicio-contenido {
     flex-direction: column;
-    gap: 1rem;
     align-items: center;
+    padding: 20px;
+  }
+
+  .inicio-imagen img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Tarjetas de servicios */
+  .tarjetas-servicios {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
   }
 
   .tarjeta {
-    width: 90%;
-    min-height: auto;
-    padding: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  .tarjeta h3 {
-    font-size: 1.2rem;
+  /* Nosotros sección */
+  .bloques-mv {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
   }
 
-  .tarjeta p {
-    font-size: 1rem;
-  }
-
-  .icono-servicio {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  /* BOTONES CONTACTO */
-  .btns-contacto {
+  /* Footer */
+  footer {
     flex-direction: column;
     align-items: center;
-    gap: 0.8rem;
-    margin-top: 1rem;
+    text-align: center;
+    gap: 10px;
   }
 
-  .btns-contacto a,
-  .btns-contacto button {
-    width: 90%;
-    padding: 0.8rem;
-    font-size: 1rem;
+  .footer-left,
+  .footer-icons {
+    width: 100%;
   }
 
-  /* FORMULARIO */
+  /* Formulario de contacto */
   .formulario-contacto {
-    width: 90%;
-    padding: 1rem;
+    padding: 15px;
   }
 
   .formulario-contacto input,
   .formulario-contacto select,
   .formulario-contacto textarea {
-    font-size: 1rem;
-  }
-
-  /* FOOTER */
-  footer {
-    text-align: center;
-    padding: 2rem 1rem;
-    flex-direction: column;
-  }
-
-  .footer-left {
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-  }
-
-  .footer-icons {
-    display: flex;
-    justify-content: center;
-    gap: 1.2rem;
-  }
-
-  /* HEXÁGONOS */
-  .hexagon {
-    width: 70px;
-    height: 60px;
-    opacity: 0.08;
-  }
-
-  /* DETALLE SERVICIOS */
-  .detalle-servicio {
-    width: 90%;
-    margin: 1rem auto;
-    padding: 1rem;
-  }
-
-  .detalle-servicio ul {
-    padding-left: 1.2rem;
-  }
-
-  .detalle-servicio li {
-    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
 
+/* Para móvil */
+@media (max-width: 768px) {
+  .footer-item {
+    flex-direction: column; /* icono arriba, texto abajo */
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Para móvil */
+@media (max-width: 768px) {
+  .contact-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-buttons .btn {
+    width: 100%;
+    max-width: 300px; /* o lo que prefieras */
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-btn.whatsapp {
+    bottom: 120px;
+    right: 15px;
+  }
+  
+  .floating-btn.contacto {
+    bottom: 60px;
+    right: 15px;
+  }
+}
+
+/* Desktop: menú visible, toggle oculto */
+.menu-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* Móvil: menú oculto, toggle visible */
+@media (max-width: 768px) {
+  .menu-nav {
+    display: none;
+    position: absolute;
+    top: 60px; /* ajusta según altura header */
+    right: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    flex-direction: column;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+  
+  .menu-nav.active {
+    display: flex;
+  }
+  
+  .menu-toggle {
+    display: block;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.menu-nav {
+  display: none;
+  /* Otros estilos de menú móvil */
+}
+
+.menu-nav.visible {
+  display: block;
+}
