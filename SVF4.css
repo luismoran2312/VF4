@@ -1,0 +1,1065 @@
+:root {
+  --main-purple: #7b2cbf;
+  --light-purple: #e0bbff;
+  --dark-purple: #4a148c;
+  --glass-bg: rgba(245, 225, 255, 0.5);
+  --whatsapp-green: #25d366;
+  --facebook-blue: #1877f2;
+}
+
+/* Reset y base */
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, var(--light-purple), #f3e5f5);
+  color: var(--dark-purple);
+  position: relative;
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1 0 auto;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Header */
+header {
+  backdrop-filter: blur(12px);
+  background-color: var(--glass-bg);
+  border-bottom: 1px solid #cba4db;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(123, 44, 191, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--main-purple);
+}
+
+.logo img {
+  height: 100px;
+  margin-right: 15px;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+.btn-rounded {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  min-width: 140px;
+  height: 48px; /* aumentado para botones más grandes */
+  line-height: 1.4;
+  text-align: center;
+  background-color: transparent;
+  border: 2px solid var(--main-purple);
+  border-radius: 30px;
+  color: var(--main-purple);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
+  font-size: 1.1rem; /* tamaño un poco mayor para mejor legibilidad */
+}
+
+.btn-rounded.active,
+.btn-rounded:hover {
+  background-color: var(--main-purple);
+  color: #fff;
+}
+
+.btn-rounded.contacto {
+  border-color: var(--main-purple);
+  color: var(--main-purple);
+  background-color: transparent;
+}
+
+.btn-rounded.contacto:hover,
+.btn-rounded.contacto.active {
+  background-color: var(--main-purple);
+  color: white;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a.btn-rounded {
+  width: 160px; /* ancho mayor para submenu */
+  height: 48px;  /* igual que botones principales */
+  box-sizing: border-box;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid var(--main-purple);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  z-index: 1001;
+  min-width: 275px; /* más espacio para texto */
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  transform: translateY(10px);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 0.8rem 1.5rem; /* mayor padding para más espacio */
+  text-decoration: none;
+  color: var(--main-purple);
+  font-weight: 500;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--light-purple);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Secciones */
+section {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  scroll-margin-top: 100px; /* para evitar que header tape al hacer scroll a anclas */
+}
+
+section + section {
+  margin-top: 1rem; /* espacio pequeño entre secciones */
+}
+
+.tarjeta h3 {
+  font-size: 1.5rem; /* Tamaño del título de la tarjeta */
+}
+
+.tarjeta p {
+  font-size: 1rem; /* Tamaño del texto de la tarjeta */
+  line-height: 1.5;
+}
+
+section h2,
+section h3,
+section p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Encabezados en todas las secciones */
+section h2.titulo-seccion,
+section h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  text-transform: capitalize;
+  letter-spacing: 0.05em;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--dark-purple);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+  letter-spacing: 0.05em;
+}
+
+/* Texto de párrafos en todas las secciones */
+section p,
+section .texto-seccion,
+.texto-seccion {
+  font-family: 'Merriweather', serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #5c2473;
+  text-align: justify;
+  margin-bottom: 1rem;
+}
+
+/* Tarjetas */
+.tarjetas-servicios {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: nowrap; /* Para mantener en línea sin bajar */
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .tarjetas-servicios {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.tarjeta {
+  flex: 1 1 30%;
+  max-width: 300px;
+  min-height: 360px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  color: var(--dark-purple);
+  box-shadow: 0 8px 16px rgba(123, 44, 191, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(123, 44, 191, 0.2);
+}
+
+@media (max-width: 768px) {
+  .tarjeta {
+    flex: 1 1 90%;
+    max-width: none;
+    min-height: auto;
+    width: 90%;
+  }
+}
+
+/* Botones de servicio */
+.btn-servicio {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--main-purple);
+  background-color: transparent;
+  color: var(--main-purple);
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-servicio:hover {
+  background-color: var(--main-purple);
+  color: white;
+}
+
+/* Sección Nosotros */
+.seccion-nosotros {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 4rem 2rem;
+}
+
+.bloque-quienes {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.bloques-mv {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 768px) {
+  .bloques-mv {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.bloque-mv {
+  flex: 1 1 45%;
+  max-width: 450px;
+  min-height: 320px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(123, 44, 191, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bloque-mv:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(123, 44, 191, 0.2);
+}
+
+.icono-mv {
+  font-size: 5rem;
+  margin-bottom: 1.2rem;
+  color: var(--main-purple);
+}
+
+.bloque-mv h3 {
+  margin-bottom: 0.5rem;
+  color: var(--main-purple);
+}
+
+.bloque-mv p {
+  color: #5c2473;
+  line-height: 1.6;
+}
+
+/* Footer */
+footer {
+  background-color: var(--main-purple);
+  color: white;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.footer-left {
+  font-size: 0.9rem;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-icons a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  border: 2px solid;
+}
+
+.footer-icons a.whatsapp {
+  border-color: var(--whatsapp-green);
+  color: var(--whatsapp-green);
+}
+
+.footer-icons a.whatsapp:hover {
+  background-color: var(--whatsapp-green);
+  color: white;
+}
+
+.footer-icons a.facebook {
+  border-color: var(--facebook-blue);
+  color: var(--facebook-blue);
+}
+
+.footer-icons a.facebook:hover {
+  background-color: var(--facebook-blue);
+  color: white;
+}
+
+.footer-icons a.contacto {
+  border-color: white;
+  color: white;
+}
+
+.footer-icons a.contacto:hover {
+  background-color: white;
+  color: var(--main-purple);
+}
+
+/* Botones flotantes */
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  box-shadow: 0 4px 12px rgba(123,44,191,0.6);
+  cursor: pointer;
+  z-index: 9999;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.floating-btn.whatsapp {
+  right: 20px;
+  background-color: var(--whatsapp-green);
+}
+
+.floating-btn.whatsapp:hover {
+  background-color: #1ebe57;
+}
+
+.floating-btn.contacto {
+  right: 90px;
+  background-color: var(--main-purple);
+}
+
+.floating-btn.contacto:hover {
+  background-color: #5a1a97;
+}
+
+@media (max-width: 768px) {
+  .floating-btn.whatsapp {
+    right: 15px;
+    bottom: 80px;
+  }
+
+  .floating-btn.contacto {
+    right: 15px;
+    bottom: 150px;
+  }
+}
+
+/* Botón dentro de sección contacto */
+.contacto-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--main-purple);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.contacto-btn:hover {
+  background-color: #5a1a97;
+}
+
+/* Hexágonos decorativos */
+.hexagon {
+  position: fixed;
+  width: 200px; /* Aumentado */
+  height: 175px; /* Aumentado */
+  background: rgba(123, 44, 191, 0.3); /* Más visible */
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  z-index: -1;
+  opacity: 0.35; /* Más opaco (de 0.15 a 0.35) */
+  animation: floatUpDown 8s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(123, 44, 191, 0.2)); /* Le da volumen */
+  transition: opacity 0.3s ease;
+}
+
+.hex7 {
+  top: 15%;
+  right: 15%;
+  animation-delay: 1s;
+}
+
+.hex8 {
+  top: 60%;
+  right: 20%;
+  animation-delay: 3s;
+}
+
+.hex9 {
+  bottom: 20%;
+  right: 10%;
+  animation-delay: 5s;
+}
+
+@media (max-width: 768px) {
+  /* Reducir tamaño de los hexágonos */
+  .hexagon {
+    width: 80px;
+    height: 70px;
+    opacity: 0.1;
+  }
+
+  /* Reposicionar para que no se amontonen */
+  .hex1 {
+    top: 5%;
+    left: 5%;
+  }
+  .hex2 {
+    top: 30%;
+    right: 5%;
+  }
+  .hex3 {
+    bottom: 10%;
+    left: 5%;
+  }
+  .hex7 {
+    top: 20%;
+    right: 10%;
+  }
+  .hex8 {
+    top: 50%;
+    right: 12%;
+  }
+  .hex9 {
+    bottom: 15%;
+    right: 8%;
+  }
+}
+
+/* Posiciones individuales (puedes agregar más si quieres) */
+.hex1 { top: 8%; left: 8%; animation-delay: 0s; }
+.hex2 { top: 35%; right: 5%; animation-delay: 2s; }
+.hex3 { bottom: 12%; left: 12%; animation-delay: 4s; }
+
+/* Animación flotante */
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+
+/* Animación aparición para tarjeta */
+.aparecer {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: all 0.5s ease;
+}
+
+/* Inicio contenido y texto */
+.inicio-contenido {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: space-between; /* Espacio entre texto y logo */
+  gap: 2rem; /* Espacio entre texto y logo */
+  flex-wrap: wrap; /* Que baje a la línea si es pantalla chica */
+  padding: 2rem 1rem;
+}
+
+.inicio-texto {
+  flex: 1 1 60%; /* Ocupa hasta 60% del ancho, se adapta */
+  font-size: 1.2rem;
+  text-align: justify;
+  font-family: 'Merriweather', serif; /* ejemplo de fuente formal */
+}
+
+.inicio-texto p {
+  font-weight: 400;
+  color: #3d155f;
+  line-height: 1.7;
+}
+
+.inicio-logo {
+  flex: 1 1 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inicio-logo img {
+  max-width: 100%;
+  height: auto;
+  max-height: 140px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(123,44,191,0.3);
+}
+
+/* Mejoras en links para accesibilidad */
+a:focus,
+button:focus {
+  outline: 3px solid var(--main-purple);
+  outline-offset: 2px;
+}
+
+/* Inicio: logo a la derecha, texto a la izquierda, centrados verticalmente */
+.inicio-contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  padding: 2rem 1rem;
+}
+
+.inicio-texto {
+  flex: 1 1 70%;
+  font-size: 1.2rem;
+  text-align: justify;
+  font-family: 'Merriweather', serif;
+  min-width: 0;
+}
+
+.inicio-imagen {
+  flex: 1 1 35%; /* Logo ocupa hasta 35% */
+  text-align: right; /* Logo alineado a la derecha */
+}
+
+.inicio-imagen img {
+  max-width: 300px; /* Ajusta tamaño del logo */
+  height: auto;
+}
+
+/* Sección contacto: centrar texto y dar más espacio inferior */
+section#contacto {
+  padding: 3rem 1rem 6rem; /* más padding abajo para separar del footer */
+  text-align: center;
+}
+
+section#contacto p,
+section#contacto .texto-seccion {
+  margin: 0 auto 2rem; /* centrar y espacio abajo */
+  max-width: 600px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #5c2473;
+  font-family: 'Merriweather', serif;
+}
+
+/* 1. Botones contacto y "ver más" igual que botones header */
+.contacto-btn,
+.btn-servicio {
+  /* Reutilizamos estilos base de .btn-rounded */
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  min-width: 140px;
+  height: 48px;
+  line-height: 1.4;
+  text-align: center;
+  background-color: transparent;
+  border: 2px solid var(--main-purple);
+  border-radius: 30px;
+  color: var(--main-purple);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
+  font-size: 1.1rem;
+}
+
+.contacto-btn:hover,
+.contacto-btn:focus,
+.btn-servicio:hover,
+.btn-servicio:focus {
+  background-color: var(--main-purple);
+  color: #fff;
+}
+
+/* 2. Ajuste de iconos en tarjetas */
+.tarjeta .icono-servicio, /* si usas la clase icono-mv dentro tarjetas */
+.tarjeta  {
+  font-size: 5rem; /* igual tamaño que en .bloque-mv */
+  color: var(--main-purple);
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+
+/* 3. Ajustar tamaño de letra submenu */
+.dropdown-content a {
+  font-size: 1.1rem; /* tamaño un poco mayor */
+  line-height: 1.6; /* mejor lectura */
+  padding: 0.9rem 1.5rem; /* padding un poco más alto */
+}
+
+/* HORARIO DE ATENCIÓN */
+.horario-atencion {
+  background-color: var(--glass-bg);
+  border-left: 5px solid var(--main-purple);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(123, 44, 191, 0.1);
+  margin: 2rem auto;
+  max-width: 700px;
+  text-align: left;
+}
+
+.horario-atencion h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--main-purple);
+  margin-bottom: 1rem;
+}
+
+.lista-horario {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Merriweather', serif;
+  font-size: 1.1rem;
+  color: var(--dark-purple);
+}
+
+.lista-horario li {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #d6a5f0;
+}
+
+.lista-horario li:last-child {
+  border-bottom: none;
+}
+
+.lista-horario li.cerrado {
+  color: #a3a3a3;
+  font-style: italic;
+}
+
+/* FORMULARIO DE CONTACTO */
+.formulario-contacto {
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 16px rgba(123, 44, 191, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.formulario-contacto input,
+.formulario-contacto select,
+.formulario-contacto textarea {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--main-purple);
+  border-radius: 8px;
+  font-family: 'Merriweather', serif;
+  font-size: 1rem;
+  color: var(--dark-purple);
+  background-color: rgba(255, 255, 255, 0.6);
+  resize: vertical;
+}
+
+.formulario-contacto input:focus,
+.formulario-contacto select:focus,
+.formulario-contacto textarea:focus {
+  outline: 2px solid var(--main-purple);
+  background-color: #fff;
+}
+
+.btn-enviar {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: transparent;
+  color: var(--main-purple);
+  border: 2px solid var(--main-purple);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: center;
+  min-width: 160px;
+}
+
+.btn-enviar:hover {
+  background-color: var(--main-purple);
+  color: #fff;
+}
+
+/* BOTÓN CORREO */
+.btn-correo {
+  background-color: transparent;
+  border: 2px solid var(--main-purple);
+  color: var(--main-purple);
+  padding: 0.6rem 1.2rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-correo:hover {
+  background-color: var(--main-purple);
+  color: white;
+}
+
+/* Estilo para botones debajo del horario de atención */
+/* Contenedor de los botones */
+.btns-contacto {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Estilo base para los tres botones */
+.btns-contacto a,
+.btns-contacto button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 200px;          /* 🔥 Fuerza mismo ancho */
+  height: 52px;          /* 🔥 Fuerza mismo alto */
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 30px;
+  border: 2px solid;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(123, 44, 191, 0.1);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* WhatsApp estilo */
+.btns-contacto .btn-wsp {
+  border-color: var(--whatsapp-green);
+  color: var(--whatsapp-green);
+}
+
+.btns-contacto .btn-wsp:hover {
+  background-color: var(--whatsapp-green);
+  color: white;
+}
+
+/* Facebook estilo */
+.btns-contacto .btn-facebook {
+  border-color: var(--facebook-blue);
+  color: var(--facebook-blue);
+}
+
+.btns-contacto .btn-facebook:hover {
+  background-color: var(--facebook-blue);
+  color: white;
+}
+
+/* Correo estilo (naranja personalizado) */
+:root {
+  --correo-orange: #ff6d00;
+}
+
+.btns-contacto .btn-correo {
+  border-color: var(--correo-orange);
+  color: var(--correo-orange);
+}
+
+.btns-contacto .btn-correo:hover {
+  background-color: var(--correo-orange);
+  color: white;
+}
+
+/* Día actual resaltado en horario */
+.lista-horario li.hoy {
+  background-color: var(--main-purple);
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.oculto {
+  display: none !important;
+}
+
+.detalle-servicio {
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 16px rgba(123, 44, 191, 0.1);
+  color: var(--dark-purple);
+}
+
+.detalle-servicio h2 {
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+}
+
+.detalle-servicio {
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 16px rgba(123, 44, 191, 0.1);
+  color: var(--dark-purple);
+  transition: all 0.4s ease;
+}
+
+.detalle-servicio h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.detalle-servicio ul {
+  padding-left: 1.5rem;
+  list-style-type: none;
+}
+
+.detalle-servicio li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+.detalle-servicio li::before {
+  content: "\f00c"; /* ícono de check (✓) */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  color: var(--dark-purple);
+  font-size: 1rem;
+}
+
+
+.oculto {
+  display: none;
+}   
+
+/* Opcional: animación de aparición */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.icono-li {
+  float: right;
+  color: #7b2cbf;
+  margin-left: 1rem;
+  font-size: 1.1rem;
+}
+
+/* ======= Responsive para móviles (max-width: 768px) ======= */
+@media (max-width: 768px) {
+  body, main, section {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  /* Header y navegación */
+  header {
+    padding: 1rem 1.5rem;
+    position: relative;
+  }
+
+  /* Mostrar botón hamburguesa y ocultar menú normal */
+  .menu-hamburguesa {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+  }
+  nav.nav-buttons {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    border-top: 1px solid var(--dark-purple);
+    box-shadow: 0 8px 16px rgba(123, 44, 191, 0.15);
+    border-radius: 0 0 15px 15px;
+    z-index: 999;
+  }
+  nav.nav-buttons.show {
+    display: flex;
+  }
+  nav.nav-buttons a.btn-rounded {
+    padding: 1rem;
+    border-radius: 0;
+    border-bottom: 1px solid var(--dark-purple);
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  /* Tarjetas se apilan en columna */
+  .tarjetas-servicios {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tarjeta {
+    flex: 1 1 90%;
+    max-width: none;
+    min-height: auto;
+    width: 90%;
+  }
+
+  /* Formularios y secciones más compactas */
+  #formulario-contacto {
+    width: 95%;
+    padding: 1rem;
+  }
+  #formulario-contacto input,
+  #formulario-contacto textarea {
+    font-size: 1rem;
+  }
+
+  /* Hexágonos decorativos más pequeños y menos opacos */
+  .hexagon {
+    width: 60px;
+    height: 52px;
+    opacity: 0.08;
+  }
+
+  /* Detalles servicios */
+  .detalle-servicio {
+    max-width: 95%;
+    padding: 1rem;
+  }
+  .detalle-servicio h2 {
+    font-size: 1.5rem;
+  }
+  .detalle-servicio li {
+    font-size: 1rem;
+  }
+}
