@@ -991,6 +991,9 @@ section#contacto .texto-seccion {
     align-items: center;
     text-align: center;
     gap: 10px;
+
+    /* Ocultar botones del header en móvil */
+    display: none;
   }
 
   .nav-buttons a {
@@ -1043,6 +1046,19 @@ section#contacto .texto-seccion {
     width: 100%;
   }
 
+  /* Centrar botones del footer en móvil */
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0;
+  }
+
+  .footer-left {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
   /* Formulario de contacto */
   .formulario-contacto {
     padding: 15px;
@@ -1053,6 +1069,12 @@ section#contacto .texto-seccion {
   .formulario-contacto textarea {
     width: 100%;
     margin-bottom: 10px;
+  }
+
+  /* Ocultar botones flotantes en móvil */
+  .floating-btn.whatsapp,
+  .floating-btn.contacto {
+    display: none;
   }
 }
 
