@@ -7,6 +7,10 @@
   --facebook-blue: #1877f2;
 }
 
+body, main {
+  overflow-x: hidden;
+}
+
 /* Reset y base */
 html {
   scroll-behavior: smooth;
@@ -763,6 +767,12 @@ section#contacto .texto-seccion {
   gap: 1.2rem;
 }
 
+.formulario-contacto {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .formulario-contacto input,
 .formulario-contacto select,
 .formulario-contacto textarea {
@@ -1158,4 +1168,32 @@ section#contacto .texto-seccion {
 
 .menu-nav.visible {
   display: block;
+}
+
+@media (max-width: 768px) {
+  .formulario-contacto {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 12px;
+    background-color: #fff;
+    margin: 0 10px; /* pequeño margen lateral */
+    box-sizing: border-box;
+  }
+
+  .formulario-contacto input,
+  .formulario-contacto select,
+  .formulario-contacto textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .formulario-contacto .btn-enviar {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+    box-sizing: border-box;
+  }
 }
