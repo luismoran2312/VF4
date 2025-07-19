@@ -137,3 +137,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// Toggle menú hamburguesa
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+
+// Submenú móvil
+  const navItems = document.querySelectorAll('.nav-item > a');
+  navItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      if (window.innerWidth <= 700) {
+        e.preventDefault();
+        const parent = item.parentElement;
+        parent.classList.toggle('open');
+      }
+    });
+  });
+
+  // Cerrar menú hamburguesa
+      nav.classList.remove('show');
+
+      // Abrir submenú en móvil (opcional)
+      const serviciosNavItem = document.querySelector('.nav-item');
+      if (window.innerWidth <= 700 && serviciosNavItem) {
+        serviciosNavItem.classList.add('open');
+      }
