@@ -63,28 +63,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
       observer.observe(footer);
     }
-
-    // Menú hamburguesa
-    const menuBtn = document.querySelector('.menu-toggle');
-    const menuNav = document.querySelector('.menu-nav');
-
-    if (menuBtn && menuNav) {
-      menuBtn.addEventListener('click', () => {
-        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-        menuNav.classList.toggle('visible');
-        menuBtn.setAttribute('aria-expanded', (!isExpanded).toString());
-      });
-
-      menuNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          menuNav.classList.remove('visible');
-          menuBtn.setAttribute('aria-expanded', 'false');
-        });
-      });
-    }
   }
 
-  // === FUNCIONALIDADES QUE SE USAN EN TODAS LAS RESOLUCIONES ===
+  // === FUNCIONALIDADES PARA TODAS LAS RESOLUCIONES ===
+
+  // Menú hamburguesa
+  const menuBtn = document.querySelector('.menu-toggle');
+  const menuNav = document.querySelector('.menu-nav');
+
+  if (menuBtn && menuNav) {
+    menuBtn.addEventListener('click', () => {
+      const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuNav.classList.toggle('visible');
+      menuBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+    });
+
+    menuNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuNav.classList.remove('visible');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
   // Mostrar/ocultar formulario de contacto
   const btnCorreo = document.getElementById('btn-correo');
@@ -134,32 +134,33 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const targetId = el.dataset.target || (el.getAttribute('href')?.replace('#', ''));
       if (targetId) mostrarSeccion(targetId);
+
+      // En móvil: cerrar menú hamburguesa y cerrar submenú "Servicios" si está abierto
+      if (window.innerWidth <= 768) {
+        if (menuNav) {
+          menuNav.classList.remove('visible');
+          if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+        }
+        if (dropdown) dropdown.classList.remove('abierto');
+        if (dropdownToggle) dropdownToggle.setAttribute('aria-expanded', 'false');
+      }
     });
   });
+
+  // === Submenú "Servicios" desplegable en móvil ===
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const dropdown = document.querySelector('.dropdown');
+
+  if (dropdownToggle && dropdown) {
+    dropdownToggle.addEventListener('click', e => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault(); // Evita salto a #servicios
+        const isOpen = dropdown.classList.contains('abierto');
+        dropdown.classList.toggle('abierto', !isOpen);
+
+        // Accesibilidad
+        dropdownToggle.setAttribute('aria-expanded', (!isOpen).toString());
+      }
+    });
+  }
 });
-
-// Toggle menú hamburguesa
-  menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('show');
-  });
-
-// Submenú móvil
-  const navItems = document.querySelectorAll('.nav-item > a');
-  navItems.forEach(item => {
-    item.addEventListener('click', (e) => {
-      if (window.innerWidth <= 700) {
-        e.preventDefault();
-        const parent = item.parentElement;
-        parent.classList.toggle('open');
-      }
-    });
-  });
-
-  // Cerrar menú hamburguesa
-      nav.classList.remove('show');
-
-      // Abrir submenú en móvil (opcional)
-      const serviciosNavItem = document.querySelector('.nav-item');
-      if (window.innerWidth <= 700 && serviciosNavItem) {
-        serviciosNavItem.classList.add('open');
-      }

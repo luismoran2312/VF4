@@ -1122,7 +1122,7 @@ section#contacto .texto-seccion {
   }
 }
 
-/* Desktop: menú visible, toggle oculto */
+/* Menú hamburguesa - escritorio */
 .menu-nav {
   display: flex;
   gap: 1.5rem;
@@ -1132,12 +1132,13 @@ section#contacto .texto-seccion {
   display: none;
 }
 
-/* Móvil: menú oculto, toggle visible */
+/* Menú hamburguesa y submenú móvil */
 @media (max-width: 768px) {
+  /* Menú principal oculto por defecto */
   .menu-nav {
     display: none;
     position: absolute;
-    top: 60px; /* ajusta según altura header */
+    top: 60px; /* ajusta según la altura del header */
     right: 10px;
     background-color: white;
     border: 1px solid #ccc;
@@ -1147,11 +1148,13 @@ section#contacto .texto-seccion {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 1000;
   }
-  
-  .menu-nav.active {
+
+  /* Mostrar menú cuando tenga clase .visible */
+  .menu-nav.visible {
     display: flex;
   }
-  
+
+  /* Botón toggle visible en móvil */
   .menu-toggle {
     display: block;
     font-size: 2rem;
@@ -1159,76 +1162,29 @@ section#contacto .texto-seccion {
     border: none;
     cursor: pointer;
   }
-}
 
-.menu-nav {
-  display: none;
-  /* Otros estilos de menú móvil */
-}
-
-.menu-nav.visible {
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .formulario-contacto {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    gap: 12px;
-    background-color: #fff;
-    margin: 0 10px; /* pequeño margen lateral */
-    box-sizing: border-box;
-  }
-
-  .formulario-contacto input,
-  .formulario-contacto select,
-  .formulario-contacto textarea {
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 1rem;
-    padding: 10px;
-  }
-
-  .formulario-contacto .btn-enviar {
-    width: 100%;
-    font-size: 1rem;
-    padding: 12px;
-    box-sizing: border-box;
-  }
-}
-
-/* Menú toggle (hamburguesa) */
-#menu-toggle {
-  display: none;
-  font-size: 1.8rem;
-  color: white;
-  cursor: pointer;
-}
-
-/* Responsive Menu */
-@media (max-width: 700px) {
-  #menu-toggle {
-    display: block;
-  }
-
-  nav {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background: rgba(0, 82, 179, 1); /* celeste oscuro */
-    flex-direction: column;
+  /* Submenú dropdown oculto */
+  .dropdown .dropdown-content {
     display: none;
-    z-index: 999;
+    flex-direction: column;
+    background: #003366;
+    padding-left: 1rem;
   }
 
-  nav.show {
+  /* Submenú abierto */
+  .dropdown.abierto .dropdown-content {
     display: flex;
   }
 
-  nav a {
-    padding: 12px 25px;
-    border-top: 1px solid rgba(0, 123, 255, 1);
+  /* Estilo enlaces submenú */
+  .dropdown .dropdown-content a {
+    padding: 10px;
+    color: white;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .dropdown .dropdown-content a:hover {
+    background-color: #0055a5;
   }
 }
