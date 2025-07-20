@@ -5,16 +5,16 @@
   --glass-bg: rgba(245, 225, 255, 0.5);
   --whatsapp-green: #25d366;
   --facebook-blue: #1877f2;
+  --correo-orange: #ff6d00;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
 }
 
 body, main {
   overflow-x: hidden;
-}
-
-/* Reset y base */
-html {
-  scroll-behavior: smooth;
-  height: 100%;
 }
 
 body {
@@ -26,7 +26,6 @@ body {
   background: linear-gradient(135deg, var(--light-purple), #f3e5f5);
   color: var(--dark-purple);
   position: relative;
-  overflow-x: hidden;
 }
 
 main {
@@ -40,7 +39,7 @@ main {
 header {
   backdrop-filter: blur(12px);
   background-color: var(--glass-bg);
-  border-bottom: 1px solid #cba4db;
+  border-bottom: 5px solid var(--dark-purple);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,48 +66,114 @@ header {
   margin-right: 15px;
 }
 
+/* Inicio contenido y texto */
+.inicio-contenido {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: space-between; /* Espacio entre texto y logo */
+  gap: 2rem; /* Espacio entre texto y logo */
+  flex-wrap: wrap; /* Que baje a la línea si es pantalla chica */
+  padding: 2rem 1rem;
+}
+
+.inicio-texto {
+  flex: 1 1 60%; /* Ocupa hasta 60% del ancho, se adapta */
+  font-size: 1.2rem;
+  text-align: justify;
+  font-family: 'Merriweather', serif; /* ejemplo de fuente formal */
+}
+
+.inicio-texto p {
+  font-weight: 400;
+  color: #3d155f;
+  line-height: 1.7;
+}
+
+.inicio-logo {
+  flex: 1 1 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inicio-logo img {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(123,44,191,0.3);
+}
+
 .nav-buttons {
   display: flex;
   gap: 1rem;
   position: relative;
 }
 
-.btn-rounded {
+/* Botones redondeados */
+.btn-rounded,
+.contacto-btn,
+.btn-servicio,
+.btn-enviar,
+.btn-correo {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   min-width: 140px;
-  height: 48px; /* aumentado para botones más grandes */
+  height: 48px;
   line-height: 1.4;
+  font-size: 1.1rem;
+  font-weight: 500;
   text-align: center;
-  background-color: transparent;
+  text-decoration: none;
+  white-space: nowrap;
   border: 2px solid var(--main-purple);
   border-radius: 30px;
   color: var(--main-purple);
-  font-weight: 500;
-  text-decoration: none;
+  background-color: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
-  white-space: nowrap;
   box-sizing: border-box;
-  font-size: 1.1rem; /* tamaño un poco mayor para mejor legibilidad */
+  align-self: center;
 }
 
 .btn-rounded.active,
-.btn-rounded:hover {
+.btn-rounded.contacto.active,
+.btn-rounded:hover,
+.contacto-btn:hover,
+.contacto-btn:focus,
+.btn-servicio:hover,
+.btn-servicio:focus,
+.btn-enviar:hover,
+.btn-enviar:focus,
+.btn-correo:hover,
+.btn-correo:focus {
   background-color: var(--main-purple);
   color: #fff;
+  outline: none;
 }
 
-.btn-rounded.contacto {
-  border-color: var(--main-purple);
-  color: var(--main-purple);
+/* Botones servicio específicos */
+.btn-servicio {
+  margin-top: 1rem;
+  border-radius: 25px;
+  font-weight: 600;
   background-color: transparent;
+  border: 2px solid var(--main-purple);
+  color: var(--main-purple);
 }
 
-.btn-rounded.contacto:hover,
-.btn-rounded.contacto.active {
+.btn-servicio:hover {
   background-color: var(--main-purple);
   color: white;
+}
+
+.btn-enviar {
+  min-width: 160px;
+  font-weight: 600;
+}
+
+.btn-correo {
+  padding: 0.6rem 1.2rem;
 }
 
 /* Dropdown */
@@ -117,9 +182,8 @@ header {
 }
 
 .dropdown > a.btn-rounded {
-  width: 160px; /* ancho mayor para submenu */
-  height: 48px;  /* igual que botones principales */
-  box-sizing: border-box;
+  width: 160px;
+  height: 48px;
 }
 
 .dropdown-content {
@@ -132,7 +196,7 @@ header {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   overflow: hidden;
   z-index: 1001;
-  min-width: 275px; /* más espacio para texto */
+  min-width: 275px;
   padding: 0.5rem 0;
   opacity: 0;
   visibility: hidden;
@@ -142,13 +206,13 @@ header {
 
 .dropdown-content a {
   display: block;
-  padding: 0.8rem 1.5rem; /* mayor padding para más espacio */
+  padding: 0.8rem 1.5rem;
   text-decoration: none;
   color: var(--main-purple);
   font-weight: 500;
-  transition: background-color 0.3s;
   font-size: 1rem;
   line-height: 1.5;
+  transition: background-color 0.3s;
 }
 
 .dropdown-content a:hover {
@@ -163,43 +227,8 @@ header {
 }
 
 /* Secciones */
-section {
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  scroll-margin-top: 100px; /* para evitar que header tape al hacer scroll a anclas */
-}
 
-section + section {
-  margin-top: 1rem; /* espacio pequeño entre secciones */
-}
-
-.tarjeta h3 {
-  font-size: 1.5rem; /* Tamaño del título de la tarjeta */
-}
-
-.tarjeta p {
-  font-size: 1rem; /* Tamaño del texto de la tarjeta */
-  line-height: 1.5;
-}
-
-section h2,
-section h3,
-section p {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-/* Encabezados en todas las secciones */
-section h2.titulo-seccion,
-section h2 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 1rem;
-  font-size: 2.5rem;
-  text-transform: capitalize;
-  letter-spacing: 0.05em;
+.titulo-seccion {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   color: var(--dark-purple);
@@ -207,26 +236,91 @@ section h2 {
   margin-bottom: 1rem;
   text-transform: capitalize;
   letter-spacing: 0.05em;
+  text-align: center;
 }
 
-/* Texto de párrafos en todas las secciones */
-section p,
-section .texto-seccion,
-.texto-seccion {
+section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+section p {  /* Texto de Todas Las Secciones */
   font-family: 'Merriweather', serif;
   font-size: 1.2rem;
   line-height: 1.6;
-  color: #5c2473;
+  color: #5c2473; /* color específico, no en variable */
   text-align: justify;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Tarjetas */
+/* --- Sección contacto --- */
+section#contacto {
+  padding: 2rem 1rem 2rem; /* ESPACIO FOOTER */
+}
+
+/* Sección Nosotros */
+.seccion-nosotros {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+}
+
+.bloques-mv {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 768px) {
+  .bloques-mv {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.bloque-mv {
+  flex: 1 1 45%;
+  max-width: 450px;
+  min-height: 320px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(123, 44, 191, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: var(--dark-purple);
+}
+
+.bloque-mv:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(123, 44, 191, 0.2);
+}
+
+.icono-mv {
+  font-size: 4rem;
+  margin-bottom: 1.2rem;
+  color: var(--main-purple);
+}
+
+.bloque-mv h3 {
+  margin-bottom: 0.5rem;
+  color: var(--main-purple);
+}
+
+.bloque-mv p {
+  color: #5c2473; /* específico */
+  line-height: 1.6;
+}
+
+/* Tarjetas de servicios */
 .tarjetas-servicios {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  flex-wrap: nowrap; /* Para mantener en línea sin bajar */
+  flex-wrap: nowrap;
   margin-top: 2rem;
 }
 
@@ -264,91 +358,10 @@ section .texto-seccion,
 @media (max-width: 768px) {
   .tarjeta {
     flex: 1 1 90%;
+    width: 90%;
     max-width: none;
     min-height: auto;
-    width: 90%;
   }
-}
-
-/* Botones de servicio */
-.btn-servicio {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  border: 2px solid var(--main-purple);
-  background-color: transparent;
-  color: var(--main-purple);
-  border-radius: 25px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-servicio:hover {
-  background-color: var(--main-purple);
-  color: white;
-}
-
-/* Sección Nosotros */
-.seccion-nosotros {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding: 4rem 2rem;
-}
-
-.bloque-quienes {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.bloques-mv {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: nowrap;
-}
-
-@media (max-width: 768px) {
-  .bloques-mv {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-}
-
-.bloque-mv {
-  flex: 1 1 45%;
-  max-width: 450px;
-  min-height: 320px;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(8px);
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(123, 44, 191, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.bloque-mv:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(123, 44, 191, 0.2);
-}
-
-.icono-mv {
-  font-size: 5rem;
-  margin-bottom: 1.2rem;
-  color: var(--main-purple);
-}
-
-.bloque-mv h3 {
-  margin-bottom: 0.5rem;
-  color: var(--main-purple);
-}
-
-.bloque-mv p {
-  color: #5c2473;
-  line-height: 1.6;
 }
 
 /* Footer */
@@ -361,6 +374,7 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   flex-shrink: 0;
+  border-top: 5px solid var(--dark-purple);
 }
 
 .footer-left {
@@ -424,11 +438,11 @@ footer {
   width: 60px;
   height: 60px;
   border-radius: 50%;
+  font-size: 28px;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 28px;
   box-shadow: 0 4px 12px rgba(123,44,191,0.6);
   cursor: pointer;
   z-index: 9999;
@@ -460,272 +474,139 @@ footer {
     right: 15px;
     bottom: 80px;
   }
-
   .floating-btn.contacto {
     right: 15px;
     bottom: 150px;
   }
 }
 
-/* Botón dentro de sección contacto */
-.contacto-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  background-color: var(--main-purple);
-  color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  text-decoration: none;
-}
-
-.contacto-btn:hover {
-  background-color: #5a1a97;
-}
-
-/* Hexágonos decorativos */
-.hexagon {
-  position: fixed;
-  width: 200px; /* Aumentado */
-  height: 175px; /* Aumentado */
-  background: rgba(123, 44, 191, 0.3); /* Más visible */
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  z-index: -1;
-  opacity: 0.35; /* Más opaco (de 0.15 a 0.35) */
-  animation: floatUpDown 8s ease-in-out infinite;
-  filter: drop-shadow(0 4px 8px rgba(123, 44, 191, 0.2)); /* Le da volumen */
-  transition: opacity 0.3s ease;
-}
-
-.hex7 {
-  top: 15%;
-  right: 15%;
-  animation-delay: 1s;
-}
-
-.hex8 {
-  top: 60%;
-  right: 20%;
-  animation-delay: 3s;
-}
-
-.hex9 {
-  bottom: 20%;
-  right: 10%;
-  animation-delay: 5s;
-}
-
-@media (max-width: 768px) {
-  /* Reducir tamaño de los hexágonos */
-  .hexagon {
-    width: 80px;
-    height: 70px;
-    opacity: 0.1;
-  }
-
-  /* Reposicionar para que no se amontonen */
-  .hex1 {
-    top: 5%;
-    left: 5%;
-  }
-  .hex2 {
-    top: 30%;
-    right: 5%;
-  }
-  .hex3 {
-    bottom: 10%;
-    left: 5%;
-  }
-  .hex7 {
-    top: 20%;
-    right: 10%;
-  }
-  .hex8 {
-    top: 50%;
-    right: 12%;
-  }
-  .hex9 {
-    bottom: 15%;
-    right: 8%;
-  }
-}
-
-/* Posiciones individuales (puedes agregar más si quieres) */
-.hex1 { top: 8%; left: 8%; animation-delay: 0s; }
-.hex2 { top: 35%; right: 5%; animation-delay: 2s; }
-.hex3 { bottom: 12%; left: 12%; animation-delay: 4s; }
-
-/* Animación flotante */
-@keyframes floatUpDown {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-
-/* Animación aparición para tarjeta */
-.aparecer {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: all 0.5s ease;
-}
-
-/* Inicio contenido y texto */
-.inicio-contenido {
-  display: flex;
-  align-items: center; /* Centra verticalmente */
-  justify-content: space-between; /* Espacio entre texto y logo */
-  gap: 2rem; /* Espacio entre texto y logo */
-  flex-wrap: wrap; /* Que baje a la línea si es pantalla chica */
-  padding: 2rem 1rem;
-}
-
-.inicio-texto {
-  flex: 1 1 60%; /* Ocupa hasta 60% del ancho, se adapta */
-  font-size: 1.2rem;
-  text-align: justify;
-  font-family: 'Merriweather', serif; /* ejemplo de fuente formal */
-}
-
-.inicio-texto p {
-  font-weight: 400;
-  color: #3d155f;
-  line-height: 1.7;
-}
-
-.inicio-logo {
-  flex: 1 1 30%;
+/* Botones de contacto debajo del horario */
+.btns-contacto {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btns-contacto a,
+.btns-contacto button {
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 200px;
+  height: 52px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 30px;
+  border: 2px solid;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(123, 44, 191, 0.1);
+  text-align: center;
+  white-space: nowrap;
+  color: inherit; /* hereda el color definido por la clase */
 }
 
-.inicio-logo img {
-  max-width: 100%;
-  height: auto;
-  max-height: 140px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(123,44,191,0.3);
+/* Colores y bordes específicos */
+.btns-contacto .btn-wsp {
+  border-color: var(--whatsapp-green);
+  color: var(--whatsapp-green);
 }
 
-/* Mejoras en links para accesibilidad */
+.btns-contacto .btn-facebook {
+  border-color: var(--facebook-blue);
+  color: var(--facebook-blue);
+}
+
+.btns-contacto .btn-correo {
+  border-color: var(--correo-orange);
+  color: var(--correo-orange);
+}
+
+/* Hover unificado para texto */
+.btns-contacto .btn-wsp:hover,
+.btns-contacto .btn-facebook:hover,
+.btns-contacto .btn-correo:hover {
+  color: white;
+}
+
+/* Hover con fondo específico por botón */
+.btns-contacto .btn-wsp:hover {
+  background-color: var(--whatsapp-green);
+}
+
+.btns-contacto .btn-facebook:hover {
+  background-color: var(--facebook-blue);
+}
+
+.btns-contacto .btn-correo:hover {
+  background-color: var(--correo-orange);
+}
+
+/* HEXAGONOS */
+.hexagon {
+  position: fixed;
+  background: rgba(123, 44, 191, 0.3);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  z-index: -1;
+  filter: drop-shadow(0 4px 8px rgba(123, 44, 191, 0.2));
+  transition: opacity 0.3s ease;
+  animation: floatUpDown 8s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* --- Enlaces accesibles --- */
 a:focus,
 button:focus {
   outline: 3px solid var(--main-purple);
   outline-offset: 2px;
 }
 
-/* Inicio: logo a la derecha, texto a la izquierda, centrados verticalmente */
-.inicio-contenido {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: nowrap;
-  padding: 2rem 1rem;
-}
-
-.inicio-texto {
-  flex: 1 1 70%;
-  font-size: 1.2rem;
-  text-align: justify;
-  font-family: 'Merriweather', serif;
-  min-width: 0;
-}
-
-.inicio-imagen {
-  flex: 1 1 35%; /* Logo ocupa hasta 35% */
-  text-align: right; /* Logo alineado a la derecha */
-}
-
-.inicio-imagen img {
-  max-width: 300px; /* Ajusta tamaño del logo */
-  height: auto;
-}
-
-/* Sección contacto: centrar texto y dar más espacio inferior */
-section#contacto {
-  padding: 3rem 1rem 6rem; /* más padding abajo para separar del footer */
-  text-align: center;
-}
-
-section#contacto p,
-section#contacto .texto-seccion {
-  margin: 0 auto 2rem; /* centrar y espacio abajo */
-  max-width: 600px;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #5c2473;
-  font-family: 'Merriweather', serif;
-}
-
-/* 1. Botones contacto y "ver más" igual que botones header */
-.contacto-btn,
-.btn-servicio {
-  /* Reutilizamos estilos base de .btn-rounded */
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  min-width: 140px;
-  height: 48px;
-  line-height: 1.4;
-  text-align: center;
-  background-color: transparent;
-  border: 2px solid var(--main-purple);
-  border-radius: 30px;
-  color: var(--main-purple);
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  box-sizing: border-box;
-  font-size: 1.1rem;
-}
-
-.contacto-btn:hover,
-.contacto-btn:focus,
-.btn-servicio:hover,
-.btn-servicio:focus {
-  background-color: var(--main-purple);
-  color: #fff;
-}
-
-/* 2. Ajuste de iconos en tarjetas */
-.tarjeta .icono-servicio, /* si usas la clase icono-mv dentro tarjetas */
-.tarjeta  {
-  font-size: 5rem; /* igual tamaño que en .bloque-mv */
+/* --- Iconos en tarjetas --- */
+.tarjeta,
+.tarjeta .icono-servicio {
+  font-size: 4rem;
   color: var(--main-purple);
   margin-bottom: 1rem;
   display: inline-block;
 }
 
-
-/* 3. Ajustar tamaño de letra submenu */
+/* --- Submenú --- */
 .dropdown-content a {
-  font-size: 1.1rem; /* tamaño un poco mayor */
-  line-height: 1.6; /* mejor lectura */
-  padding: 0.9rem 1.5rem; /* padding un poco más alto */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  padding: 0.9rem 1.5rem;
 }
 
-/* HORARIO DE ATENCIÓN */
+/* --- Horario de atención --- */
 .horario-atencion {
   background-color: var(--glass-bg);
-  border-left: 5px solid var(--main-purple);
+  border-left: 20px solid var(--main-purple);
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(123, 44, 191, 0.1);
-  margin: 2rem auto;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  margin: 1rem auto;
   max-width: 700px;
-  text-align: left;
+  text-align: justify;
 }
 
 .horario-atencion h3 {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
   color: var(--main-purple);
-  margin-bottom: 1rem;
+  margin: 1rem ;
 }
 
 .lista-horario {
@@ -739,7 +620,7 @@ section#contacto .texto-seccion {
 
 .lista-horario li {
   padding: 0.5rem 1rem;
-  border-bottom: 1px solid #d6a5f0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .lista-horario li:last-child {
@@ -747,28 +628,30 @@ section#contacto .texto-seccion {
 }
 
 .lista-horario li.cerrado {
-  color: #a3a3a3;
+  color: var(--closed-color);
   font-style: italic;
 }
 
-/* FORMULARIO DE CONTACTO */
+.lista-horario li.hoy {
+  background-color: var(--main-purple);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+/* --- Formulario de contacto --- */
 .formulario-contacto {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: var(--glass-bg);
   backdrop-filter: blur(10px);
   border-radius: 12px;
   padding: 2rem;
-  margin-top: 2rem;
+  margin: 2rem auto 0;
   max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 4px 16px rgba(123, 44, 191, 0.1);
+  box-shadow: 0 4px 16px var(--shadow-color);
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-}
-
-.formulario-contacto {
-  max-width: 100%;
   width: 100%;
   box-sizing: border-box;
 }
@@ -793,162 +676,33 @@ section#contacto .texto-seccion {
   background-color: #fff;
 }
 
-.btn-enviar {
-  padding: 0.75rem 1.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  background-color: transparent;
-  color: var(--main-purple);
-  border: 2px solid var(--main-purple);
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  align-self: center;
-  min-width: 160px;
-}
-
-.btn-enviar:hover {
-  background-color: var(--main-purple);
-  color: #fff;
-}
-
-/* BOTÓN CORREO */
-.btn-correo {
-  background-color: transparent;
-  border: 2px solid var(--main-purple);
-  color: var(--main-purple);
-  padding: 0.6rem 1.2rem;
-  font-size: 1.1rem;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-correo:hover {
-  background-color: var(--main-purple);
-  color: white;
-}
-
-/* Estilo para botones debajo del horario de atención */
-/* Contenedor de los botones */
-.btns-contacto {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-/* Estilo base para los tres botones */
-.btns-contacto a,
-.btns-contacto button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 200px;          /* 🔥 Fuerza mismo ancho */
-  height: 52px;          /* 🔥 Fuerza mismo alto */
-  font-size: 1.05rem;
-  font-weight: 500;
-  text-decoration: none;
-  border-radius: 30px;
-  border: 2px solid;
-  background-color: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(123, 44, 191, 0.1);
-  text-align: center;
-  white-space: nowrap;
-}
-
-/* WhatsApp estilo */
-.btns-contacto .btn-wsp {
-  border-color: var(--whatsapp-green);
-  color: var(--whatsapp-green);
-}
-
-.btns-contacto .btn-wsp:hover {
-  background-color: var(--whatsapp-green);
-  color: white;
-}
-
-/* Facebook estilo */
-.btns-contacto .btn-facebook {
-  border-color: var(--facebook-blue);
-  color: var(--facebook-blue);
-}
-
-.btns-contacto .btn-facebook:hover {
-  background-color: var(--facebook-blue);
-  color: white;
-}
-
-/* Correo estilo (naranja personalizado) */
-:root {
-  --correo-orange: #ff6d00;
-}
-
-.btns-contacto .btn-correo {
-  border-color: var(--correo-orange);
-  color: var(--correo-orange);
-}
-
-.btns-contacto .btn-correo:hover {
-  background-color: var(--correo-orange);
-  color: white;
-}
-
-/* Día actual resaltado en horario */
-.lista-horario li.hoy {
-  background-color: var(--main-purple);
-  color: white;
-  font-weight: bold;
-  border-radius: 6px;
-  padding: 0.5rem;
-}
-
+/* --- Oculto genérico --- */
 .oculto {
   display: none !important;
 }
 
+/* --- Detalle de servicio --- */
 .detalle-servicio {
   padding: 2rem;
   margin: 2rem auto;
   max-width: 800px;
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--glass-bg);
   border-radius: 15px;
   backdrop-filter: blur(8px);
-  box-shadow: 0 8px 16px rgba(123, 44, 191, 0.1);
-  color: var(--dark-purple);
-}
-
-.detalle-servicio h2 {
-  margin-bottom: 1rem;
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-}
-
-.detalle-servicio {
-  padding: 2rem;
-  margin: 2rem auto;
-  max-width: 800px;
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 15px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 8px 16px rgba(123, 44, 191, 0.1);
+  box-shadow: 0 8px 16px var(--shadow-color);
   color: var(--dark-purple);
   transition: all 0.4s ease;
 }
 
 .detalle-servicio h2 {
+  font-family: 'Playfair Display', serif;
   font-size: 2rem;
   margin-bottom: 1rem;
-  font-family: 'Playfair Display', serif;
 }
 
 .detalle-servicio ul {
   padding-left: 1.5rem;
-  list-style-type: none;
+  list-style: none;
 }
 
 .detalle-servicio li {
@@ -960,7 +714,7 @@ section#contacto .texto-seccion {
 }
 
 .detalle-servicio li::before {
-  content: "\f00c"; /* ícono de check (✓) */
+  content: "\f00c";
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   position: absolute;
@@ -970,40 +724,35 @@ section#contacto .texto-seccion {
   font-size: 1rem;
 }
 
-
-.oculto {
-  display: none;
-}   
-
-/* Opcional: animación de aparición */
+/* --- Animaciones --- */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* --- Icono en lista alineado a la derecha --- */
 .icono-li {
   float: right;
-  color: #7b2cbf;
+  color: var(--main-purple);
   margin-left: 1rem;
   font-size: 1.1rem;
 }
 
-/* MOVIL DE AQUI PARA ABAJO */
-/* ---------------------------
-   MEDIA QUERIES PARA MÓVILES
-------------------------------*/
-
+/* --- Media Queries Móviles --- */
 @media screen and (max-width: 768px) {
-
-  /* Ajuste de navegación */
+  /* Navegación móvil */
   .nav-buttons {
+    display: none;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 10px;
-
-    /* Ocultar botones del header en móvil */
-    display: none;
   }
 
   .nav-buttons a {
@@ -1011,7 +760,7 @@ section#contacto .texto-seccion {
     display: block;
   }
 
-  /* Inicio contenido */
+  /* Contenido inicial */
   .inicio-contenido {
     flex-direction: column;
     align-items: center;
@@ -1056,7 +805,11 @@ section#contacto .texto-seccion {
     width: 100%;
   }
 
-  /* Centrar botones del footer en móvil */
+  .footer-left {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
   .footer-icons {
     display: flex;
     justify-content: center;
@@ -1064,12 +817,24 @@ section#contacto .texto-seccion {
     padding: 10px 0;
   }
 
-  .footer-left {
+  .footer-item {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin-bottom: 10px;
   }
 
-  /* Formulario de contacto */
+  /* Botones de contacto */
+  .contact-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Formulario */
   .formulario-contacto {
     padding: 15px;
   }
@@ -1081,110 +846,176 @@ section#contacto .texto-seccion {
     margin-bottom: 10px;
   }
 
-  /* Ocultar botones flotantes en móvil */
+  /* Botones flotantes ocultos en móvil */
   .floating-btn.whatsapp,
   .floating-btn.contacto {
     display: none;
   }
 }
 
-/* Para móvil */
-@media (max-width: 768px) {
-  .footer-item {
-    flex-direction: column; /* icono arriba, texto abajo */
-    align-items: center;
-    text-align: center;
-  }
-}
+.carrusel-servicios {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  background: var(--glass-bg);
+  box-shadow: 0 8px 24px var(--shadow-color);
+  border-radius: 12px;
+  padding: 25px 30px 50px; /* espacio extra abajo para paginación */
+  margin: 1.5rem auto 3rem auto;
 
-/* Para móvil */
-@media (max-width: 768px) {
-  .contact-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .contact-buttons .btn {
-    width: 100%;
-    max-width: 300px; /* o lo que prefieras */
-  }
-}
-
-@media (max-width: 768px) {
-  .floating-btn.whatsapp {
-    bottom: 120px;
-    right: 15px;
-  }
-  
-  .floating-btn.contacto {
-    bottom: 60px;
-    right: 15px;
-  }
-}
-
-/* Menú hamburguesa - escritorio */
-.menu-nav {
   display: flex;
-  gap: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.menu-toggle {
+.carrusel-contenido {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.flecha {
+  position: relative;
+  top: auto;
+  transform: none;
+  width: 40px;
+  height: 40px;
+  font-size: 1.8rem;
+  background: var(--main-purple);
+  color: white;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+.flecha:hover {
+  background-color: var(--hover-color);
+}
+
+.flecha.izquierda {
+  order: 1;
+  margin-right: 10px;
+}
+
+.flecha.derecha {
+  order: 3;
+  margin-left: 10px;
+}
+
+.contenedor-servicios {
+  order: 2;
+  flex: 1 1 auto;
+  max-width: 700px;
+}
+
+/* Secciones detalle */
+.detalle-servicio {
   display: none;
+  animation: fadeIn 0.3s ease-in-out;
+  padding: 1.5rem;
+  background-color: var(--glass-bg);
+  border-left: 6px solid var(--main-purple);
+  border-radius: 14px;
+  box-shadow: 0 6px 16px var(--shadow-color);
+  color: var(--text-color);
+  font-family: 'Merriweather', serif;
+  text-align: left;
+  line-height: 1.5;
+  transition: box-shadow 0.3s ease;
 }
 
-/* Menú hamburguesa y submenú móvil */
-@media (max-width: 768px) {
-  /* Menú principal oculto por defecto */
-  .menu-nav {
-    display: none;
-    position: absolute;
-    top: 60px; /* ajusta según la altura del header */
-    right: 10px;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 1rem;
-    flex-direction: column;
-    width: 200px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 1000;
-  }
+.detalle-servicio.activa {
+  display: block;
+  box-shadow: 0 8px 20px var(--accent-color);
+}
 
-  /* Mostrar menú cuando tenga clase .visible */
-  .menu-nav.visible {
-    display: flex;
-  }
+/* Paginación */
+.paginacion-servicios {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-  /* Botón toggle visible en móvil */
-  .menu-toggle {
-    display: block;
-    font-size: 2rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
+.punto {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: var(--main-purple);
+  opacity: 0.5;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.3s;
+}
 
-  /* Submenú dropdown oculto */
-  .dropdown .dropdown-content {
-    display: none;
-    flex-direction: column;
-    background: #003366;
-    padding-left: 1rem;
-  }
+.punto.activo {
+  opacity: 1;
+  transform: scale(1.4);
+}
 
-  /* Submenú abierto */
-  .dropdown.abierto .dropdown-content {
-    display: flex;
-  }
 
-  /* Estilo enlaces submenú */
-  .dropdown .dropdown-content a {
-    padding: 10px;
-    color: white;
-    font-size: 0.95rem;
-    text-decoration: none;
-  }
 
-  .dropdown .dropdown-content a:hover {
-    background-color: #0055a5;
-  }
+
+
+
+
+
+
+
+
+.carrusel-decorativo {
+  position: relative;
+  overflow: hidden;
+  background: transparent; /* Elimina el fondo amarillento */
+  padding: 0; /* Quita espacio arriba y abajo */
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #333;
+  max-height: 100px; /* Más delgado */
+}
+
+.carrusel-decorativo .slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carrusel-decorativo .slide {
+  min-width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carrusel-decorativo .slide.activa {
+  opacity: 1;
+}
+
+.carrusel-decorativo .slide img {
+  width: 100%;
+  height: auto;
+  max-height: 180px; /* Ajusta el grosor */
+  object-fit: cover; /* Cubre el contenedor sin deformar */
+  display: block;
+  margin: 0 auto;
+  border: none; /* Asegura que no haya bordes */
+}
+
+
+
+
+
+
+.carrusel-decorativo .slide {
+  display: none; /* Oculta todas */
+}
+
+.carrusel-decorativo .slide.activa {
+  display: block; /* Solo la activa se muestra */
 }

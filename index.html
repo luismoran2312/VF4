@@ -29,9 +29,8 @@
       <p>CH. OUTSOURCING</br>"Soluciones Confiables, Impulsando tu Éxito"</p>
     </div>
 
-    <button id="menu-toggle" aria-label="Abrir menú de navegación"><i class="fas fa-bars"></i></button>
+    
     <nav class="nav-buttons" role="navigation" aria-label="Menú principal">
-
       <a href="#inicio" class="btn-rounded"><i class="fas fa-home"></i>  Inicio</a>
       <div class="dropdown">
         <a href="#servicios" class="btn-rounded" aria-haspopup="true" aria-expanded="false"><i class="fas fa-briefcase"></i> Servicios <i class="fas fa-caret-down"></i></a>
@@ -45,6 +44,27 @@
       <a href="#contacto" class="btn-rounded contacto"><i class="fa-solid fa-paper-plane"></i>  Contacto</a>
     </nav>
   </header>
+
+<!-- CARRUSEL DECORATIVO -->
+
+  <section class="carrusel-decorativo">
+  <div class="slides">
+    <div class="slide activa">
+      <!-- Imagen del slide 1 -->
+      <img src="desktop3.jpg" alt="Imagen 1" />
+    </div>
+    <div class="slide">
+      <img src="desktop2.jpg" alt="Imagen 2" />
+    </div>
+    <div class="slide">
+      <img src="desktop4.jpg" alt="Imagen 3" />
+    </div>
+    <div class="slide">
+      <img src="desktop5.jpg" alt="Imagen 4" />
+    </div>
+  </div>
+</section>
+
 
 <!-- SECCION INICIO -->  
 
@@ -63,7 +83,7 @@
         Sabemos que emprender no es fácil, por eso somos más que asesores: somos tus aliados estratégicos. Hablemos, analicemos y construyamos juntos el camino hacia tu éxito.
       </p>
     </div>
-    <div class="inicio-imagen">
+    <div class="inicio-logo">
       <img src="logo1.png" alt="Logo de CH. OUTSOURCING" />
     </div>
     </div>
@@ -105,46 +125,57 @@
     </div>
     </div>
 
-<!-- SUBMENU SERVICIOS -->
+    <!-- SUBMENU SERVICIOS -->
 
     <!-- SECCIONES DETALLADAS DE SERVICIOS (OCULTAS HASTA CLIC) -->
-<section id="asesoria-contable" class="detalle-servicio oculto">
-  <h2><i class="fas fa-calculator"></i>   Asesoría Contable</h2>
-  <p>Brindamos apoyo experto para mantener tus finanzas en orden y cumplir con tus obligaciones tributarias.</p>
-  <ul>
-    <li>Registro de transacciones contables</li>
-    <li>Declaraciones tributarias mensuales</li>
-    <li>Asesoramiento en normativas vigentes</li>
-    <li>Conciliaciones bancarias</li>
-    <li>Elaboración de estados financieros</li>
-  </ul>
-</section>
 
-<section id="consultoria-administrativa" class="detalle-servicio oculto">
-  <h2><i class="fas fa-chart-line"></i>   Consultoría Administrativa</h2>
-  <p>Mejoramos la gestión interna de tu empresa para que puedas tomar decisiones más estratégicas.</p>
-  <ul>
-    <li>Optimización de procesos internos</li>
-    <li>Gestión de recursos humanos</li>
-    <li>Control de inventarios</li>
-    <li>Planificación operativa</li>
-    <li>Diseño de flujos de trabajo</li>
-  </ul>
-</section>
 
-<section id="planificacion-financiera" class="detalle-servicio oculto">
-  <h2><i class="fas fa-hand-holding-usd"></i>   Planificación Financiera</h2>
-  <p>Proyectamos y estructuramos tus recursos económicos para maximizar resultados y minimizar riesgos.</p>
-  <ul>
-    <li>Proyecciones de flujo de caja</li>
-    <li>Evaluación de inversiones</li>
-    <li>Presupuestos personalizados</li>
-    <li>Planes de ahorro y contingencia</li>
-    <li>Análisis de rentabilidad</li>
-  </ul>
-</section>
+  <div class="carrusel-servicios oculto">
+  <div class="carrusel-contenido">
+    <button class="flecha izquierda">&#10094;</button>
+      <div class="contenedor-servicios">
+      <section id="asesoria-contable" class="detalle-servicio">
+        <h2><i class="fas fa-calculator"></i>   Asesoría Contable</h2>
+        <p>Brindamos apoyo experto para mantener tus finanzas en orden y cumplir con tus obligaciones tributarias.</p>
+        <ul>
+           <li>Registro de transacciones contables</li>
+           <li>Declaraciones tributarias mensuales</li>
+           <li>Asesoramiento en normativas vigentes</li>
+           <li>Conciliaciones bancarias</li>
+           <li>Elaboración de estados financieros</li>
+        </ul>
+      </section>
 
- </section>
+      <section id="consultoria-administrativa" class="detalle-servicio">
+        <h2><i class="fas fa-chart-line"></i>   Consultoría Administrativa</h2>
+        <p>Mejoramos la gestión interna de tu empresa para que puedas tomar decisiones más estratégicas.</p>
+        <ul>
+          <li>Optimización de procesos internos</li>
+          <li>Gestión de recursos humanos</li>
+          <li>Control de inventarios</li>
+          <li>Planificación operativa</li>
+          <li>Diseño de flujos de trabajo</li>
+        </ul>
+      </section>
+
+      <section id="planificacion-financiera" class="detalle-servicio">
+        <h2><i class="fas fa-hand-holding-usd"></i>   Planificación Financiera</h2>
+        <p>Proyectamos y estructuramos tus recursos económicos para maximizar resultados y minimizar riesgos.</p>
+        <ul>
+          <li>Proyecciones de flujo de caja</li>
+          <li>Evaluación de inversiones</li>
+          <li>Presupuestos personalizados</li>
+          <li>Planes de ahorro y contingencia</li>
+          <li>Análisis de rentabilidad</li>
+          </ul>
+      </section>
+    </div>
+    <button class="flecha derecha">&#10095;</button>
+    </div>
+  <div class="paginacion-servicios"> </div>
+  </div>
+
+ </section> <!-- Cierre se Seccion SERVICIOS -->
 
 <!-- SECCION NOSOTROS -->
 
@@ -170,7 +201,7 @@
       <i class="icono-mv fas fa-eye"></i>
       <h3>Visión</h3>
       <p>
-      Ser reconocidos como un aliado clave en el crecimiento y éxito sostenido de las pequeñas empresas en Chile, promoviendo una gestión ordenada, digital y orientada al futuro.
+      Ser reconocidos como un aliado clave en el crecimiento y éxito sostenido de las pequeñas empresas, promoviendo una gestión ordenada, digital y orientada al futuro.
       </p>
     </div>
     </div>
@@ -182,8 +213,8 @@
 
     <section id="contacto">
       <h2 class="titulo-seccion">Contacto</h2>
-      <p class="texto-seccion">Formulario o información para que los visitantes puedan contactarte.</p>
-      <p class="texto-seccion">¿Quieres ponerte en contacto con nosotros? ¡Estamos listos para ayudarte!</p>
+      <p class="texto-seccion">Escríbenos por WhatsApp, Facebook o correo. ¡Te responderemos lo antes posible!</p>
+      <p class="texto-seccion">Estamos disponibles para ayudarte. Consulta a continuación nuestros horarios de Atencion.</p>
     <div class="horario-atencion">
       <h3>Horario de Atención</h3>
       <ul class="lista-horario">
@@ -250,6 +281,7 @@
   </footer>
 
   <!-- Botones flotantes -->
+
   <a href="https://wa.me/50372736259" target="_blank" class="floating-btn whatsapp" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
