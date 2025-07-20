@@ -51,25 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // === MENÚ HAMBURGUESA ===
-  const menuBtn = document.querySelector('.menu-toggle');
-  const menuNav = document.querySelector('.menu-nav');
-
-  if (menuBtn && menuNav) {
-    menuBtn.addEventListener('click', () => {
-      const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuNav.classList.toggle('visible');
-      menuBtn.setAttribute('aria-expanded', (!isExpanded).toString());
-    });
-
-    menuNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuNav.classList.remove('visible');
-        menuBtn.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
   // === FORMULARIO DE CONTACTO ===
   const btnCorreo = document.getElementById('btn-correo');
   const form = document.getElementById('formulario-contacto');
@@ -282,22 +263,41 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateHexagons, 10000);
   });
 
-  // === CARRUSEL DECORATIVO DE ABAJO DEL HEADER ===
-  const slides = document.querySelectorAll('.carrusel-decorativo .slide');
-  if (slides.length > 0) {
-    let slideActual = 0;
+  // === CARRUSEL DECORATIVO (AUTOMÁTICO, SIN FLECHAS) ===
+  const slidesContainer = document.getElementById('slides');
+  if (slidesContainer) {
+    const gap = 16; // debe coincidir con CSS gap
+    const slides = slidesContainer.children;
+    const slideCount = slides.length;
 
-    // Inicializar con la primera visible
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('activa', i === slideActual);
-    });
+    // Duplicar contenido para loop infinito
+    slidesContainer.innerHTML += slidesContainer.innerHTML;
 
-    function cambiarSlideDecorativo() {
-      slides[slideActual].classList.remove('activa');
-      slideActual = (slideActual + 1) % slides.length;
-      slides[slideActual].classList.add('activa');
+    let slideWidth = slides[0].offsetWidth;
+    let totalWidth = (slideWidth + gap) * slideCount;
+
+    let posX = 0;
+    const speed = 0.5;
+
+    function animate() {
+      posX -= speed;
+      if (posX <= -totalWidth) {
+        posX = 0;
+      }
+      slidesContainer.style.transform = `translateX(${posX}px)`;
+      requestAnimationFrame(animate);
     }
 
-    setInterval(cambiarSlideDecorativo, 4000);
+    function recalcWidth() {
+      slideWidth = slides[0].offsetWidth;
+      totalWidth = (slideWidth + gap) * slideCount;
+    }
+
+    window.addEventListener('resize', () => {
+      recalcWidth();
+    });
+
+    recalcWidth();
+    animate();
   }
 });

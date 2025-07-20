@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
+<!-- HEXAGONOS -->
   <div class="hexagon hex1"></div>
   <div class="hexagon hex2"></div>
   <div class="hexagon hex3"></div>
@@ -21,15 +21,12 @@
   <div class="hexagon hex7"></div>
   <div class="hexagon hex8"></div>
   <div class="hexagon hex9"></div>
-
+<!-- Header -->
   <header>
-  
     <div class="logo">
       <img src="logo1.png" alt="Logo de CH. OUTSOURCING – Soluciones Confiables" />
       <p>CH. OUTSOURCING</br>"Soluciones Confiables, Impulsando tu Éxito"</p>
     </div>
-
-    
     <nav class="nav-buttons" role="navigation" aria-label="Menú principal">
       <a href="#inicio" class="btn-rounded"><i class="fas fa-home"></i>  Inicio</a>
       <div class="dropdown">
@@ -44,30 +41,38 @@
       <a href="#contacto" class="btn-rounded contacto"><i class="fa-solid fa-paper-plane"></i>  Contacto</a>
     </nav>
   </header>
-
 <!-- CARRUSEL DECORATIVO -->
-
-  <section class="carrusel-decorativo">
-  <div class="slides">
-    <div class="slide activa">
-      <!-- Imagen del slide 1 -->
-      <img src="desktop3.jpg" alt="Imagen 1" />
-    </div>
-    <div class="slide">
-      <img src="desktop2.jpg" alt="Imagen 2" />
-    </div>
-    <div class="slide">
-      <img src="desktop4.jpg" alt="Imagen 3" />
-    </div>
-    <div class="slide">
-      <img src="desktop5.jpg" alt="Imagen 4" />
+  <div class="carousel-container" aria-label="Carrusel de servicios">
+  <div class="slides-wrapper">
+    <div class="slides" id="slides">
+      <div class="slide slide1">
+        <h3>Consultoría Administrativa</h3>
+        <small>Optimiza procesos y toma decisiones eficientes.</small>
+      </div>
+      <div class="slide slide2">
+        <h3>Asesoría Contable</h3>
+        <small>Registros claros y cumplimiento fiscal garantizado.</small>
+      </div>
+      <div class="slide slide3">
+        <h3>Gestión Financiera</h3>
+        <small>Controla tus finanzas y maximiza rentabilidad.</small>
+      </div>
+      <div class="slide slide4">
+        <h3>Planificación Estratégica</h3>
+        <small>Define objetivos claros y alcanzables.</small>
+      </div>
+      <div class="slide slide5">
+        <h3>Consultoría Fiscal</h3>
+        <small>Cumple con la legislación y ahorra impuestos.</small>
+      </div>
+      <div class="slide slide6">
+        <h3>Auditoría Financiera</h3>
+        <small>Revisa y mejora tus informes contables.</small>
+      </div>
     </div>
   </div>
-</section>
-
-
+  </div>
 <!-- SECCION INICIO -->  
-
   <main>
     <section id="inicio">
     <div class="inicio-contenido">
@@ -88,20 +93,16 @@
     </div>
     </div>
     </section>
-
 <!-- SECCION SERVICIOS -->    
-
     <section id="servicios">
-    <!-- NUEVO: Encabezado para las tarjetas de servicios -->
+<!-- Encabezado para las tarjetas de servicios -->
     <div class="bloque-servicios">
       <h2 class="titulo-seccion">Nuestros Servicios</h2>
       <p class="texto-seccion descripcion-servicios">
       En <strong>CH. OUTSOURCING</strong> ofrecemos una gama de servicios diseñados especialmente para emprendedores, pequeñas empresas y negocios en crecimiento. Sabemos que necesitas soluciones ágiles, confiables y personalizadas que te permitan enfocarte en lo más importante: hacer crecer tu negocio.
     </p>
     </div>
-    
-
-    <!-- NUEVO: Contenedor de tarjetas -->
+<!-- Contenedor de tarjetas -->
     <div class="tarjetas-servicios">
     <div class="tarjeta">
       <i class="icono-servicio fas fa-calculator"></i>
@@ -124,12 +125,8 @@
       <button class="btn-servicio" data-target="planificacion-financiera"><i class="fas fa-info-circle"></i>  Ver más</button>
     </div>
     </div>
-
-    <!-- SUBMENU SERVICIOS -->
-
-    <!-- SECCIONES DETALLADAS DE SERVICIOS (OCULTAS HASTA CLIC) -->
-
-
+<!-- SUBMENU SERVICIOS -->
+<!-- SECCIONES DETALLADAS DE SERVICIOS (OCULTAS HASTA CLIC) -->
   <div class="carrusel-servicios oculto">
   <div class="carrusel-contenido">
     <button class="flecha izquierda">&#10094;</button>
@@ -174,11 +171,8 @@
     </div>
   <div class="paginacion-servicios"> </div>
   </div>
-
- </section> <!-- Cierre se Seccion SERVICIOS -->
-
+  </section> <!-- Cierre se Seccion SERVICIOS -->
 <!-- SECCION NOSOTROS -->
-
     <section id="nosotros">
       <div class="seccion-nosotros">
       <div class="bloque-quienes">
@@ -207,10 +201,7 @@
     </div>
     </div>
     </section>
-    
-
 <!-- SECCION CONTACTO -->
-
     <section id="contacto">
       <h2 class="titulo-seccion">Contacto</h2>
       <p class="texto-seccion">Escríbenos por WhatsApp, Facebook o correo. ¡Te responderemos lo antes posible!</p>
@@ -227,9 +218,7 @@
         <li class="cerrado">Domingo: Cerrado</li>
       </ul>
     </div>
-
 <!-- FORMULARIO / BOTONES -->    
-
     <div class="btns-contacto">
       <a href="https://wa.me/50372736259" target="_blank" rel="noopener" class="btn-wsp" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i> WhatsApp
@@ -242,9 +231,7 @@
         <i class="fas fa-paper-plane"></i> Correo
       </button>
     </div>
-
-    <!-- Formulario oculto inicialmente -->
-
+<!-- Formulario oculto inicialmente -->
      <form id="formulario-contacto" class="formulario-contacto oculto" action="https://formsubmit.co/luismoran855@hotmail.com" method="POST" class="form-contacto">
       <input type="hidden" name="_next" value="https://choutsourcing.github.io/misitio/#inicio"> <!-- CAMBIAR EL TENER EL DOMINIO -->
       <input type="text" name="name" placeholder="Nombre completo" required autocomplete="name" />
@@ -259,10 +246,9 @@
       <textarea name="mensaje" placeholder="Mensaje" rows="4" required></textarea>
       <button type="submit" class="btn-enviar"><i class="fa-solid fa-paper-plane"></i>  Enviar</button>
     </form>
-    
     </section>
   </main>
-
+<!-- FOOTER -->
   <footer>
     <div class="footer-left">
       Contactanos: choutsourcIng1@gmail.com<br>Todos los derechos reservados<br>&copy; 2025 CH. OUTSOURCING
@@ -279,9 +265,7 @@
       </a>
     </div>
   </footer>
-
-  <!-- Botones flotantes -->
-
+<!-- Botones flotantes -->
   <a href="https://wa.me/50372736259" target="_blank" class="floating-btn whatsapp" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
@@ -289,7 +273,7 @@
   <a href="#contacto" class="floating-btn contacto" aria-label="Contacto">
     <i class="fa-solid fa-paper-plane"></i>
   </a>
-  
+<!-- Script JS -->  
   <script src="ScriptVF4.js"></script>
 
 </body>
